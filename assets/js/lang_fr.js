@@ -5,7 +5,7 @@ function langFrench(){
     document.documentElement.setAttribute("lang","fr");
     
     var STR = {
-        DESCRIPTION : "Outil de gestion stock d'ordinateurs et de pièces d'ordinateur",
+        DESCRIPTION : "Outil de gestion de stock d'ordinateurs et de pièces d'ordinateur",
         LINKS : "Liens",
         STOCK : "Stock",
         SETTINGS : "Paramètres",
