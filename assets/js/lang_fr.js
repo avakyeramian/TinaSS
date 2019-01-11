@@ -7,7 +7,7 @@ function langFrench(){
     var STR = {
         DESCRIPTION : "Outil de gestion de stock d'ordinateurs et de pièces d'ordinateur",
         LINKS : "Liens",
-        STOCK : "Stock",
+        STOCK : "Inventaire",
         SETTINGS : "Paramètres",
         IMPORT : "Importer",
         EXPORT : "Exporter",
