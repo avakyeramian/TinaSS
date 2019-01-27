@@ -1,6 +1,6 @@
 # TinaSS
 
-"This is not a SpreadSheet"
+"TinaSS is not a SpreadSheet"
 
 Stock management tool of computers and computer parts.
 

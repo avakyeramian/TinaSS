@@ -79,13 +79,9 @@ function content()
         
         for (var i in menu) {
             var entry = menu[i];
-            var li_tmp = document.createElement("li");
-            var a_tmp = document.createElement("a");
-            var i_tmp = document.createElement("i");
-            i_tmp.setAttribute("class","material-icons left");
-            i_tmp.innerHTML = entry.icon;
-            a_tmp.innerHTML = entry.label;
-            a_tmp.setAttribute("href","./?"+entry.url);
+            var li_tmp = elemCreate("li",{},"");
+            var a_tmp = elemCreate("a",{href:"./?"+entry.url},entry.label);
+            var i_tmp = elemCreate("i",{class:"material-icons left"},entry.icon);
             a_tmp.append(i_tmp);
             li_tmp.append(a_tmp);
             var li_tmp2 = li_tmp.cloneNode(true);
@@ -133,14 +129,9 @@ function content()
     */
     function pageError404(){
         tinaSS_app.innerHTML = "";
-        var div_container = document.createElement("div");
-        div_container.setAttribute("class","container");
-        var h3 = document.createElement("h3");
-        h3.setAttribute("class","center");
-        h3.innerHTML = STR.ERROR404;
-        var h4 = document.createElement("h4");
-        h4.setAttribute("class","center");
-        h4.innerHTML = STR.ERROR404TEXT;
+        var div_container = elemCreate("div",{class:"container"},"");
+        var h3 = elemCreate("h3",{class:"center"},STR.ERROR404);
+        var h4 = elemCreate("h4",{class:"center"},STR.ERROR404TEXT);
         div_container.append(h3);
         div_container.append(h4);
         tinaSS_app.append(div_container);
