@@ -65,7 +65,7 @@ function RAM(model,brand,size,type,freq,jedec,cas,url) {
     this.id = generateID();
 }
 
-function CPU(model,brand,family,partNum,cores,threads,freq,fsb,multiplier,architecture,socket,tdp,cache,url){
+function CPU(model,brand,family,partNum,cores,threads,freq,fsb,multiplier,architecture,socket,tdp,cache,url) {
     this.name = "CPU";
     this.model = model;
     this.brand = brand;
@@ -80,6 +80,34 @@ function CPU(model,brand,family,partNum,cores,threads,freq,fsb,multiplier,archit
     this.socket = socket;
     this.tdp = tdp;
     this.cache = cache;
+    this.url = url;
+    this.id = generateID();
+}
+
+function GPU(model,brand,gpuBrand,freq,vram,vramType,vramFreq,interface,tdp,url){
+    this.name = "GPU";
+    this.gpuBrand = gpuBrand;
+    this.freq = freq;
+    this.vram = vram;
+    this.vramType = vramType;
+    this.vramFreq = vramFreq;
+    this.interface = interface;
+    this.tdp = tdp;
+    this.url = url;
+    this.id = generateID();
+}
+
+function Motherboard(model,brand,format,socket,nbSocket,ramType,chipset,northbridge,southbridge,url) {
+    this.name = "Motherboard";
+    this.model = model;
+    this.brand = brand;
+    this.format = format;
+    this.socket = socket;
+    this.nbSocket = nbSocket;
+    this.ramType = ramType;
+    this.chipset = chipset;
+    this.northbridge = northbridge;
+    this.southbridge = southbridge;
     this.url = url;
     this.id = generateID();
 }
