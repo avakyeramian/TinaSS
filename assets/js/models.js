@@ -111,3 +111,69 @@ function Motherboard(model,brand,format,socket,nbSocket,ramType,chipset,northbri
     this.url = url;
     this.id = generateID();
 }
+
+function OS(family,version,architecture,url){
+    this.name = "OS";
+    this.family = family;
+    this.version = version;
+    this.architecture = architecture;
+    this.url = url;
+}
+
+function Case(model,brand,formFactor,formatPSU,formatMOBO,color,url){
+    this.name = "Case";
+    this.model = model;
+    this.brand = brand;
+    this.formFactor = formFactor;
+    this.formatPSU = formatPSU;
+    this.formatMOBO = formatMOBO;
+    this.color = color;
+    this.url = url;
+    this.id = generateID();    
+}
+
+function PowerSupply(model,brand,watt,format,url){
+    this.name = "PowerSupply";
+    this.model = model;
+    this.brand = brand;
+    this.watt = watt;
+    this.format = format;
+    this.url = url;
+    this.id = generateID();
+}
+
+function Drive(model,brand,type,size,interface,url){
+    this.name = "Drive";
+    this.model = model;
+    this.brand = brand;
+    this.type = type;
+    this.size = size;
+    this.interface = interface;
+    this.url = url;
+    this.id = generateID();
+}
+
+function Screen(model,brand,displayResolution,size,aspectRatio,interface,url){
+    this.name = "Screen";
+    this.model = model;
+    this.brand = brand;
+    this.displayResolution = displayResolution;
+    this.size = size;
+    this.aspectRatio = aspectRatio;
+    this.interface = interface;
+    this.url = url;
+    this.id = generateID();
+}
+
+function Computer(label,image,usage,type,brand,line,model,url){
+    this.name = "Computer";
+    this.label = label;
+    this.image = image;
+    this.usage = usage;
+    this.type = type;
+    this.brand = brand;
+    this.line = line;
+    this.model = model;
+    this.url = url;
+    this.id = generateID();
+}
