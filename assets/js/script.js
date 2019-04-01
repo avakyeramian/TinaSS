@@ -198,16 +198,4 @@ function content()
         tinaSS_app.append(div_container);
     }
     
-    /*
-        Shortcut function to create dom element more quickly
-    */
-    function elemCreate(type,dicoAtt,text){
-        var dom = document.createElement(type);
-        for(var key in Object.keys(dicoAtt)){
-            dom.setAttribute(Object.keys(dicoAtt)[key],dicoAtt[Object.keys(dicoAtt)[key]]);//piece of shit
-        }
-        dom.innerHTML = text;
-        return dom;
-    }
-    
 }

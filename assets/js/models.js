@@ -1,179 +1,140 @@
-function generateID() {
-    var date = Date.now();
-    
-    if(generateID.previous == 0){
-        generateID.previous = date;
-        return generateID.previous;
-    }else{
-        generateID.previous = generateID.previous + 1;
-        return generateID.previous;
-    }
-}
-
-generateID.previous = 0;
-
-function convertToBytes(value,multiple){
-    value = parseInt(value);
-    switch (multiple.split('')[0]){ // get the multiple
-        case 'o':
-            break;
-        case 'B':
-            break;
-        case 'K':
-            value=value*1000;
-            break;
-        case 'M':
-            value=value*1000000;
-            break;
-        case 'G':
-            value=value*1000000000;
-            break;
-        case 'T':
-            value=value*1000000000000;
-            break;
-        case 'P':
-            value=value*1000000000000000;
-            break;
-        default:
-            break;
-    }
-    return value;
-}
-
-function MassStorage(model,brand,size,type,interface,chs,url) {
+function MassStorage(type,brand,model,size,interface,chs,url) {
     this.name = "MassStorage";
-    this.model = model;
-    this.brand = brand;
-    this.size = size;               // In Bytes !
-    this.type = type;               // SSD or HDD ( ͡° ͜ʖ ͡°)
-    this.interface = interface;     // PATA,SCSI,SATA,SAS
-    this.chs = chs;                 // Cylinder Head Sector
-    this.url = url;
+    this.type = type;               // SSD
+    this.brand = brand;             // Crucial
+    this.model = model;             // BX300
+    this.size = size;               // 480 GB
+    this.interface = interface;     // SATA 3.0
+    this.chs = chs;                 // 
+    this.url = url;                 // https://www.crucial.com/wcsstore/CrucialSAS/pdf/product-flyer/crucial-bx300-ssd-productflyer-a4-en.pdf
     this.id = generateID();
 }
 
-function RAM(model,brand,size,type,freq,jedec,cas,url) {
+function RAM(brand,model,size,type,freq,jedec,cas,url) {
     this.name = "RAM";
-    this.model = model;
-    this.brand = brand;
-    this.size = size;               // In Bytes !
-    this.type = type;               // SDRAM,DDR2 SO-DIMM,EDO
-    this.freq = freq;               // 3200
-    this.jedec = jedec;             // PC4-25600
-    this.cas = cas;                 // CAS Latency 16 
-    this.url = url;
+    this.brand = brand;             // Kingston
+    this.model = model;             // HyperX Beast
+    this.size = size;               // 8 GB
+    this.type = type;               // DDR3
+    this.freq = freq;               // 2400 MHz
+    this.jedec = jedec;             // PC3-19200
+    this.cas = cas;                 // CL11
+    this.url = url;                 // https://www.kingston.com/dataSheets/KHX24C11T3K2_16X.pdf
     this.id = generateID();
 }
 
-function CPU(model,brand,family,partNum,cores,threads,freq,fsb,multiplier,architecture,socket,tdp,cache,url) {
+function CPU(brand,family,model,partNum,cores,threads,freq,fsb,multiplier,architecture,socket,tdp,cache,url) {
     this.name = "CPU";
-    this.model = model;
-    this.brand = brand;
-    this.family = family;
-    this.partNum = partNum;
-    this.cores = cores;
-    this.threads = threads;
-    this.freq = freq;
-    this.fsb = fsb;
-    this.multiplier = multiplier;
-    this.architecture = architecture;
-    this.socket = socket;
-    this.tdp = tdp;
-    this.cache = cache;
-    this.url = url;
+    this.brand = brand;                 // Intel
+    this.family = family;               // Core 2 Quad
+    this.model = model;                 // Q9550
+    this.partNum = partNum;             // SLAWQ
+    this.cores = cores;                 // 4
+    this.threads = threads;             // 4
+    this.freq = freq;                   // 2,83 GHz
+    this.fsb = fsb;                     // 1333 MHz
+    this.multiplier = multiplier;       // 8.5
+    this.architecture = architecture;   // Yorkfield
+    this.socket = socket;               // LGA775
+    this.tdp = tdp;                     // 95 W
+    this.cache = cache;                 // 12 MB L2
+    this.url = url;                     // http://www.cpu-world.com/sspec/SL/SLAWQ.html
     this.id = generateID();
 }
 
-function GPU(model,brand,gpuBrand,freq,vram,vramType,vramFreq,interface,tdp,url){
+function GPU(brand,model,gpuBrand,gpuModel,vram,vramType,vramFreq,freq,interface,tdp,url){
     this.name = "GPU";
-    this.gpuBrand = gpuBrand;
-    this.freq = freq;
-    this.vram = vram;
-    this.vramType = vramType;
-    this.vramFreq = vramFreq;
-    this.interface = interface;
-    this.tdp = tdp;
-    this.url = url;
+    this.brand = brand;             // MSI
+    this.model = model;             // Armor
+    this.gpuBrand = gpuBrand;       // AMD
+    this.gpuModel = gpuModel;       // Radeon RX 570
+    this.vram = vram;               // 4 GB
+    this.vramType = vramType;       // GDDR5
+    this.vramFreq = vramFreq;       // 7000 MHz
+    this.freq = freq;               // 1268 MHz
+    this.interface = interface;     // PCI Express x16 3.0
+    this.tdp = tdp;                 // 120 W
+    this.url = url;                 // https://www.msi.com/Graphics-card/Radeon-RX-570-ARMOR-4G-OC/
     this.id = generateID();
 }
 
-function Motherboard(model,brand,format,socket,nbSocket,ramType,chipset,northbridge,southbridge,url) {
+function Motherboard(brand,model,format,socket,nbSocket,ramType,chipset,northbridge,southbridge,url) {
     this.name = "Motherboard";
-    this.model = model;
-    this.brand = brand;
-    this.format = format;
-    this.socket = socket;
-    this.nbSocket = nbSocket;
-    this.ramType = ramType;
-    this.chipset = chipset;
-    this.northbridge = northbridge;
-    this.southbridge = southbridge;
-    this.url = url;
+    this.brand = brand;             // MSI
+    this.model = model;             // Z97-G43
+    this.format = format;           // ATX
+    this.socket = socket;           // LGA1150
+    this.nbSocket = nbSocket;       // 1
+    this.ramType = ramType;         // DDR3
+    this.chipset = chipset;         // Z97
+    this.northbridge = northbridge; // 
+    this.southbridge = southbridge; // 
+    this.url = url;                 // https://fr.msi.com/Motherboard/support/Z97-G43
     this.id = generateID();
 }
 
 function OS(family,version,architecture,url){
     this.name = "OS";
-    this.family = family;
-    this.version = version;
-    this.architecture = architecture;
-    this.url = url;
+    this.family = family;               // GNU/Linux
+    this.version = version;             // Ubuntu
+    this.architecture = architecture;   // 64bit
+    this.url = url;                     // https://www.ubuntu.com/
 }
 
-function Case(model,brand,formFactor,formatPSU,formatMOBO,color,url){
+function Case(brand,model,formFactor,formatPSU,formatMOBO,color,url){
     this.name = "Case";
-    this.model = model;
-    this.brand = brand;
-    this.formFactor = formFactor;
-    this.formatPSU = formatPSU;
-    this.formatMOBO = formatMOBO;
-    this.color = color;
-    this.url = url;
+    this.brand = brand;                 // Zalman
+    this.model = model;                 // Z9U3
+    this.formFactor = formFactor;       // Mid Tower
+    this.formatPSU = formatPSU;         // ATX
+    this.formatMOBO = formatMOBO;       // ATX
+    this.color = color;                 // Black
+    this.url = url;                     // http://www.zalman.com/contents/products/view.html?no=320
     this.id = generateID();    
 }
 
-function PowerSupply(model,brand,watt,format,url){
+function PowerSupply(brand,model,watt,format,url){
     this.name = "PowerSupply";
-    this.model = model;
-    this.brand = brand;
-    this.watt = watt;
-    this.format = format;
-    this.url = url;
+    this.brand = brand;             // Seasonic
+    this.model = model;             // Focus Gold SSR-550FM
+    this.watt = watt;               // 550 W
+    this.format = format;           // ATX
+    this.url = url;                 // https://seasonic.com/pub/media/pdf/consumer/datasheet/FOCUS-Gold-FM.pdf
     this.id = generateID();
 }
 
-function Drive(model,brand,type,size,interface,url){
+function Drive(type,brand,model,size,interface,url){
     this.name = "Drive";
-    this.model = model;
-    this.brand = brand;
-    this.type = type;
-    this.size = size;
-    this.interface = interface;
-    this.url = url;
+    this.type = type;               // BD Burner
+    this.brand = brand;             // Pioneer
+    this.model = model;             // BDR-209DBK
+    this.size = size;               // 5 1/4″
+    this.interface = interface;     // Sata 1.0
+    this.url = url;                 // https://www.pioneerelectronics.com/ephox/StaticFiles/PUSA/Files/Computer/BDR-209DBK/POV_BDR-209DBK.pdf
     this.id = generateID();
 }
 
-function Screen(model,brand,displayResolution,size,aspectRatio,interface,url){
+function Screen(displayResolution,aspectRatio,brand,model,size,interface,url){
     this.name = "Screen";
-    this.model = model;
-    this.brand = brand;
-    this.displayResolution = displayResolution;
-    this.size = size;
-    this.aspectRatio = aspectRatio;
-    this.interface = interface;
-    this.url = url;
+    this.displayResolution = displayResolution;     // 3440 x 1440
+    this.aspectRatio = aspectRatio;                 // 21:9
+    this.brand = brand;                             // Dell
+    this.model = model;                             // UltraSharp U3417W
+    this.size = size;                               // 34"
+    this.interface = interface;                     // DisplayPort
+    this.url = url;                                 // https://i.dell.com/sites/csdocuments/Product_Docs/en/dell_ultrasharp_34_curved_monitor_u3417w_product_spec_sheet.pdf
     this.id = generateID();
 }
 
-function Computer(label,image,usage,type,brand,line,model,url){
+function Computer(nickname,image,usage,type,brand,line,model,url){
     this.name = "Computer";
-    this.label = label;
-    this.image = image;
-    this.usage = usage;
-    this.type = type;
-    this.brand = brand;
-    this.line = line;
-    this.model = model;
-    this.url = url;
+    this.nickname = nickname;               // Applejack
+    this.image = image;                     // *base64*
+    this.usage = usage;                     // Main portable workstation
+    this.type = type;                       // Laptop
+    this.brand = brand;                     // Lenovo
+    this.line = line;                       // Thinkpad
+    this.model = model;                     // T430
+    this.url = url;                         // https://www.thinkwiki.org/wiki/Category:T430
     this.id = generateID();
 }
