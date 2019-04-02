@@ -1,10 +1,10 @@
-function MassStorage(type,brand,model,size,interface,chs,url) {
+function MassStorage(type,brand,model,size,bus,chs,url) {
     this.name = "MassStorage";
     this.type = type;               // SSD
     this.brand = brand;             // Crucial
     this.model = model;             // BX300
     this.size = size;               // 480 GB
-    this.interface = interface;     // SATA 3.0
+    this.bus = bus;     // SATA 3.0
     this.chs = chs;                 // 
     this.url = url;                 // https://www.crucial.com/wcsstore/CrucialSAS/pdf/product-flyer/crucial-bx300-ssd-productflyer-a4-en.pdf
     this.id = generateID();
@@ -42,7 +42,7 @@ function CPU(brand,family,model,partNum,cores,threads,freq,fsb,multiplier,archit
     this.id = generateID();
 }
 
-function GPU(brand,model,gpuBrand,gpuModel,vram,vramType,vramFreq,freq,interface,tdp,url){
+function GPU(brand,model,gpuBrand,gpuModel,vram,vramType,vramFreq,freq,bus,tdp,url){
     this.name = "GPU";
     this.brand = brand;             // MSI
     this.model = model;             // Armor
@@ -52,7 +52,7 @@ function GPU(brand,model,gpuBrand,gpuModel,vram,vramType,vramFreq,freq,interface
     this.vramType = vramType;       // GDDR5
     this.vramFreq = vramFreq;       // 7000 MHz
     this.freq = freq;               // 1268 MHz
-    this.interface = interface;     // PCI Express x16 3.0
+    this.bus = bus;                 // PCI Express x16 3.0
     this.tdp = tdp;                 // 120 W
     this.url = url;                 // https://www.msi.com/Graphics-card/Radeon-RX-570-ARMOR-4G-OC/
     this.id = generateID();
@@ -103,25 +103,25 @@ function PowerSupply(brand,model,watt,format,url){
     this.id = generateID();
 }
 
-function Drive(type,brand,model,size,interface,url){
+function Drive(type,brand,model,size,bus,url){
     this.name = "Drive";
     this.type = type;               // BD Burner
     this.brand = brand;             // Pioneer
     this.model = model;             // BDR-209DBK
     this.size = size;               // 5 1/4″
-    this.interface = interface;     // Sata 1.0
+    this.bus = bus;     // Sata 1.0
     this.url = url;                 // https://www.pioneerelectronics.com/ephox/StaticFiles/PUSA/Files/Computer/BDR-209DBK/POV_BDR-209DBK.pdf
     this.id = generateID();
 }
 
-function Screen(displayResolution,aspectRatio,brand,model,size,interface,url){
+function Screen(displayResolution,aspectRatio,brand,model,size,connector,url){
     this.name = "Screen";
     this.displayResolution = displayResolution;     // 3440 x 1440
     this.aspectRatio = aspectRatio;                 // 21:9
     this.brand = brand;                             // Dell
     this.model = model;                             // UltraSharp U3417W
     this.size = size;                               // 34"
-    this.interface = interface;                     // DisplayPort
+    this.connector = connector;                     // DisplayPort
     this.url = url;                                 // https://i.dell.com/sites/csdocuments/Product_Docs/en/dell_ultrasharp_34_curved_monitor_u3417w_product_spec_sheet.pdf
     this.id = generateID();
 }
