@@ -11,7 +11,29 @@ function elemCreate(type,dicoAtt,text){
 }
 
 /*
-    create id with timestamp
+    Create an input text with a json field like :
+    {"name":"brand","datalist":["AMD","VIA","Intel"],"label":"brand","form":"CPU"}
+*/
+function inputTextCreate(field){
+    var div = elemCreate("div",{class:"input-field col s6"},"");
+    var input = elemCreate("input",{type:"text",name:field.name,id:field.form+field.name},"");
+    div.append(input);
+    var label = elemCreate("label",{for:field.form+field.name},field.label);
+    div.append(label);
+    if(field.datalist){
+        var datalist = elemCreate("datalist",{id:field.form+field.name+"List"},"");
+        for(var ite in field.datalist){
+            var option = elemCreate("option",{value:field.datalist[ite]},"");
+            datalist.append(option);
+        }
+        input.setAttribute("list",field.form+field.name+"List");
+        div.append(datalist);
+    }
+    return div;
+}
+
+/*
+    Create id with timestamp
 */
 function generateID(){
     var date = Date.now();
@@ -27,7 +49,7 @@ function generateID(){
 generateID.previous = 0;
 
 /*
-    convert bytes to bits
+    Convert bytes to bits
 */
 function convertToBytes(value,multiple){
     value = parseInt(value);

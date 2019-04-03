@@ -4,7 +4,7 @@ function MassStorage(type,brand,model,size,bus,chs,url) {
     this.brand = brand;             // Crucial
     this.model = model;             // BX300
     this.size = size;               // 480 GB
-    this.bus = bus;     // SATA 3.0
+    this.bus = bus;                 // SATA 3.0
     this.chs = chs;                 // 
     this.url = url;                 // https://www.crucial.com/wcsstore/CrucialSAS/pdf/product-flyer/crucial-bx300-ssd-productflyer-a4-en.pdf
     this.id = generateID();
@@ -109,7 +109,7 @@ function Drive(type,brand,model,size,bus,url){
     this.brand = brand;             // Pioneer
     this.model = model;             // BDR-209DBK
     this.size = size;               // 5 1/4″
-    this.bus = bus;     // Sata 1.0
+    this.bus = bus;                 // Sata 1.0
     this.url = url;                 // https://www.pioneerelectronics.com/ephox/StaticFiles/PUSA/Files/Computer/BDR-209DBK/POV_BDR-209DBK.pdf
     this.id = generateID();
 }
