@@ -11,25 +11,45 @@ function elemCreate(type,dicoAtt,text){
 }
 
 /*
-    Create an input text with a json field like :
-    {"name":"brand","datalist":["AMD","VIA","Intel"],"label":"brand","form":"CPU"}
+    Create an input text with a json fieldData like :
+    {"type":"text","form":"CPU","name":"brand","label":"brand","datalist":["AMD","VIA","Intel"]}
 */
-function inputTextCreate(field){
+function inputTextCreate(fieldData){
     var div = elemCreate("div",{class:"input-field col s6"},"");
-    var input = elemCreate("input",{type:"text",name:field.name,id:field.form+field.name},"");
+    var input = elemCreate("input",{type:"text",name:fieldData.name,id:fieldData.form+fieldData.name},"");
     div.append(input);
-    var label = elemCreate("label",{for:field.form+field.name},field.label);
+    var label = elemCreate("label",{for:fieldData.form+fieldData.name},fieldData.label);
     div.append(label);
-    if(field.datalist){
-        var datalist = elemCreate("datalist",{id:field.form+field.name+"List"},"");
-        for(var ite in field.datalist){
-            var option = elemCreate("option",{value:field.datalist[ite]},"");
+    if(fieldData.datalist){
+        var datalist = elemCreate("datalist",{id:fieldData.form+fieldData.name+"List"},"");
+        for(var ite in fieldData.datalist){
+            var option = elemCreate("option",{value:fieldData.datalist[ite]},"");
             datalist.append(option);
         }
-        input.setAttribute("list",field.form+field.name+"List");
+        input.setAttribute("list",fieldData.form+fieldData.name+"List");
         div.append(datalist);
     }
     return div;
+}
+
+/*
+    Create a form with a json formData like :
+    {"title":"OS","fields":[
+            {"type":"text","form":"OS","name":"family","label":"Family","datalist":["GNU/Linux","MacOS","Microsoft"]},
+            {"type":"text","form":"OS","name":"version","label":"Version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
+            {"type":"text","form":"OS","name":"architecture","label":"Architecture","datalist":["32-bit","64-bit"]},
+            {"type":"text","form":"OS","name":"url","label":"Url"}
+    ]}
+*/
+function formCreate(formData){
+    var form = elemCreate("form",{class:"row"},"");
+    var titre = elemCreate("h5",{},formData.title);
+    form.append(titre);
+    for(var ite in formData.fields){
+        var field = inputTextCreate(formData.fields[ite]);
+        form.append(field);
+    }
+    return form;
 }
 
 /*
