@@ -55,6 +55,8 @@ function content()
         }else if ($_GET.home){
             //console.log("Home");
             pageHome();
+        }else if ($_GET.test){
+            pageTest();
         }else{
             //console.log("Error 404");
             pageError404();
@@ -73,9 +75,10 @@ function content()
         
         var stock = {icon:"widgets", url:"stock", label:STR.STOCK};
         var settings = {icon:"settings", url:"settings", label:STR.SETTINGS};
+        var test = {icon:"warning", url:"test", label:STR.TEST};
         //var importjson = {icon:"arrow_downward", action: function(){console.log("import")}, label:STR.IMPORT};
         //var exportjson = {icon:"arrow_upward", action: function(){console.log("export")}, label:STR.EXPORT};
-        var menu = [stock,settings];
+        var menu = [stock,settings,test];
         
         for (var i in menu) {
             var entry = menu[i];
@@ -149,7 +152,41 @@ function content()
         
         div_container.append(div_row);
         tinaSS_app.append(div_container);
-    }    
+    }
+    
+    function pageTest(){
+        tinaSS_app.innerHTML = "";
+        var div_container = elemCreate("div",{class:"container"},"");
+        
+        var json = {"title":"OS","fields":[
+            {"type":"text","form":"OS","name":"family","label":"Family","datalist":["GNU/Linux","MacOS","Microsoft"]},
+            {"type":"text","form":"OS","name":"version","label":"Version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
+            {"type":"text","form":"OS","name":"architecture","label":"Architecture","datalist":["32-bit","64-bit"]},
+            {"type":"text","form":"OS","name":"url","label":"Url"}
+        ]};
+        
+        var form = formCreate(json);
+        div_container.append(form);
+        
+        var buttonOk = elemCreate("button",{class:"waves-effect waves-light btn grey darken-3"},"OK");
+        buttonOk.onclick = function() {
+            var values = getFormValues("OS",["family","version","architecture","url"]);
+            console.log(values)
+        }
+        div_container.append(buttonOk);
+        var buttonReset = elemCreate("button",{class:"waves-effect waves-light btn grey darken-3"},"Reset");
+        buttonReset.onclick = function() {
+            resetFormValues("OS",["family","version","architecture","url"]);
+        }
+        div_container.append(buttonReset);
+        var buttonSet = elemCreate("button",{class:"waves-effect waves-light btn grey darken-3"},"Set");
+        buttonSet.onclick = function() {
+            setFormValues("OS",{"family":"GNU/Linux","version":"Ubuntu 18.04","architecture":"64-bit","url":""});
+        }
+        div_container.append(buttonSet);
+        
+        tinaSS_app.append(div_container);       
+    }
     
     /*
         Page settings

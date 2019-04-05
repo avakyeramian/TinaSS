@@ -18,6 +18,7 @@ function langFrench(){
         FRENCH : "Français",
         APPLY : "Appliquer",
         INDEV : "En développement",
+        TEST : "Test"
     };
     
     document.getElementById("description").innerHTML = STR.DESCRIPTION;    

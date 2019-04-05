@@ -53,6 +53,48 @@ function formCreate(formData){
 }
 
 /*
+    Get values form with formName like "OS" and fieldNames like ["family","version","architecture","url"]
+*/
+function getFormValues(formName,fieldNames){
+    var json = {}; 
+    for(var ite in fieldNames){
+        var input = document.getElementById(formName+fieldNames[ite]);
+        json[input.name]=input.value;
+    }
+    return json;
+}
+
+/*
+    Reset values form with formName like "OS" and fieldNames like ["family","version","architecture","url"]
+*/
+function resetFormValues(formName,fieldNames){
+    for(var ite in fieldNames){
+        var input = document.getElementById(formName+fieldNames[ite]);
+        input.value = "";
+    }
+    
+    // update css for Materialize
+    $(document).ready(function(){
+        M.updateTextFields();
+    });
+}
+
+/*
+    Set values form with formName like "OS" and fieldsData like {"family":"GNU/Linux","version":"Ubuntu 18.04","architecture":"64-bit","url"}
+*/
+function setFormValues(formName,fieldsData){
+    for(var att in fieldsData){
+        var input = document.getElementById(formName+att);
+        input.value = fieldsData[att];
+    }
+    
+    // update css for Materialize
+    $(document).ready(function(){
+        M.updateTextFields();
+    });
+}
+
+/*
     Create id with timestamp
 */
 function generateID(){
