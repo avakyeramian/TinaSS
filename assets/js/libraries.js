@@ -10,12 +10,20 @@ function elemCreate(type,dicoAtt,text){
     return dom;
 }
 
+/* 
+    Capitalize the 1st letter of a string like : 
+    "nvidia fuck you !" -> "Nvidia fuck you !" 
+*/ 
+function firstUpperCase(string){ 
+    return string.charAt(0).toUpperCase() + string.slice(1); 
+} 
+
 /*
     Create an input text with a json fieldData like :
     {"type":"text","form":"CPU","name":"brand","label":"brand","datalist":["AMD","VIA","Intel"]}
 */
 function inputTextCreate(fieldData){
-    var div = elemCreate("div",{class:"input-field col s6"},"");
+    var div = elemCreate("div",{class:"input-field col m6 s12"},"");
     var input = elemCreate("input",{type:"text",name:fieldData.name,id:fieldData.form+fieldData.name},"");
     div.append(input);
     var label = elemCreate("label",{for:fieldData.form+fieldData.name},fieldData.label);
@@ -43,8 +51,8 @@ function inputTextCreate(fieldData){
 */
 function formCreate(formData){
     var form = elemCreate("form",{class:"row"},"");
-    var titre = elemCreate("h5",{},formData.title);
-    form.append(titre);
+    var title = elemCreate("h5",{},formData.title);
+    form.append(title);
     for(var ite in formData.fields){
         var field = inputTextCreate(formData.fields[ite]);
         form.append(field);
