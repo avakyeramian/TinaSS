@@ -11,22 +11,14 @@ function elemCreate(type,dicoAtt,text){
 }
 
 /*
-    Capitalize the 1st letter of a string like :
-    "nvidia fuck you !" -> "Nvidia fuck you !"
-*/
-function firstUpperCase(string){
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-/*
     Create an input text with a json fieldData like :
-    {"type":"text","form":"CPU","name":"brand","datalist":["AMD","VIA","Intel"]}
+    {"type":"text","form":"CPU","name":"brand","label":"brand","datalist":["AMD","VIA","Intel"]}
 */
 function inputTextCreate(fieldData){
-    var div = elemCreate("div",{class:"input-field col m6 s12"},"");
+    var div = elemCreate("div",{class:"input-field col s6"},"");
     var input = elemCreate("input",{type:"text",name:fieldData.name,id:fieldData.form+fieldData.name},"");
     div.append(input);
-    var label = elemCreate("label",{for:fieldData.form+fieldData.name},firstUpperCase(fieldData.name));
+    var label = elemCreate("label",{for:fieldData.form+fieldData.name},fieldData.label);
     div.append(label);
     if(fieldData.datalist){
         var datalist = elemCreate("datalist",{id:fieldData.form+fieldData.name+"List"},"");
@@ -43,16 +35,16 @@ function inputTextCreate(fieldData){
 /*
     Create a form with a json formData like :
     {"title":"OS","fields":[
-            {"type":"text","form":"OS","name":"family","datalist":["GNU/Linux","MacOS","Microsoft"]},
-            {"type":"text","form":"OS","name":"version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
-            {"type":"text","form":"OS","name":"architecture","datalist":["32-bit","64-bit"]},
-            {"type":"text","form":"OS","name":"url"}
+            {"type":"text","form":"OS","name":"family","label":"Family","datalist":["GNU/Linux","MacOS","Microsoft"]},
+            {"type":"text","form":"OS","name":"version","label":"Version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
+            {"type":"text","form":"OS","name":"architecture","label":"Architecture","datalist":["32-bit","64-bit"]},
+            {"type":"text","form":"OS","name":"url","label":"Url"}
     ]}
 */
 function formCreate(formData){
     var form = elemCreate("form",{class:"row"},"");
-    var title = elemCreate("h5",{},formData.title);
-    form.append(title);
+    var titre = elemCreate("h5",{},formData.title);
+    form.append(titre);
     for(var ite in formData.fields){
         var field = inputTextCreate(formData.fields[ite]);
         form.append(field);
@@ -88,7 +80,7 @@ function resetFormValues(formName,fieldNames){
 }
 
 /*
-    Set values form with formName like "OS" and fieldsData like {"family":"GNU/Linux","version":"Ubuntu 18.04","architecture":"64-bit"}
+    Set values form with formName like "OS" and fieldsData like {"family":"GNU/Linux","version":"Ubuntu 18.04","architecture":"64-bit","url"}
 */
 function setFormValues(formName,fieldsData){
     for(var att in fieldsData){
