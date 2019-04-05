@@ -159,10 +159,10 @@ function content()
         var div_container = elemCreate("div",{class:"container"},"");
         
         var json = {"title":"OS","fields":[
-            {"type":"text","form":"OS","name":"family","label":"Family","datalist":["GNU/Linux","MacOS","Microsoft"]},
-            {"type":"text","form":"OS","name":"version","label":"Version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
-            {"type":"text","form":"OS","name":"architecture","label":"Architecture","datalist":["32-bit","64-bit"]},
-            {"type":"text","form":"OS","name":"url","label":"Url"}
+            {"type":"text","form":"OS","name":"family","datalist":["GNU/Linux","MacOS","Microsoft"]},
+            {"type":"text","form":"OS","name":"version","datalist":["Ubuntu","Debian","Windows 10","DOS"]},
+            {"type":"text","form":"OS","name":"architecture","datalist":["32-bit","64-bit"]},
+            {"type":"text","form":"OS","name":"url"}
         ]};
         
         var form = formCreate(json);
