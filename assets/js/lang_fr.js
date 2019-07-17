@@ -18,7 +18,15 @@ function langFrench(){
         FRENCH : "Français",
         APPLY : "Appliquer",
         INDEV : "En développement",
-        TEST : "Test"
+        TEST : "Test",
+        COMPUTER : "Ordinateur",
+        NICKNAME : "Surnom",
+        USAGE : "Usage",
+        TYPE : "Type",
+        BRAND : "Marque",
+        LINE : "Gamme",
+        MODEL : "Modèle",
+        URL : "Url",
     };
     
     document.getElementById("description").innerHTML = STR.DESCRIPTION;    

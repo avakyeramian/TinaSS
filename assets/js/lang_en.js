@@ -18,7 +18,15 @@ function langEnglish(){
         FRENCH : "Français",
         APPLY : "Apply",
         INDEV : "In development",
-        TEST : "Test"
+        TEST : "Test",
+        COMPUTER : "Computer",
+        NICKNAME : "Nickname",
+        USAGE : "Usage",
+        TYPE : "Type",
+        BRAND : "Brand",
+        LINE : "Line",
+        MODEL : "Model",
+        URL : "Url",
     };
     
     document.getElementById("description").innerHTML = STR.DESCRIPTION;

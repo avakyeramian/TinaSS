@@ -37,6 +37,14 @@ function inputTextCreate(fieldData){
         input.setAttribute("list",fieldData.form+fieldData.name+"List");
         div.append(datalist);
     }
+    if(fieldData.value){
+        input.setAttribute("value",fieldData.value);
+    }
+    
+    // update css for Materialize
+    $(document).ready(function(){
+        M.updateTextFields();
+    });
     return div;
 }
 
