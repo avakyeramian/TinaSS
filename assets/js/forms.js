@@ -1,4 +1,7 @@
 function ComputerForm(dom,computer){
+    if(computer == null){
+        var computer = new Computer("","","","","","","","");
+    }
     var form = formCreate({
         title:STR.COMPUTER,
         fields:[
@@ -12,5 +15,25 @@ function ComputerForm(dom,computer){
             {type:"text",form:"Computer",name:"url",label:STR.URL},
         ]
     });
-    dom.append(form);
+    
+    dom.append(form);    
+
+    var buttonOk = buttonOkForm();
+    buttonOk.onclick = function() {
+        var values = getFormValues("Computer",["nickname"/* ",image" */,"usage","type","brand","line","model","url"]);
+        computer.nickname = values.nickname;
+        /* computer.image = */
+        computer.usage = values.usage;
+        computer.type = values.type;
+        computer.brand = values.brand;
+        computer.line = values.line;
+        computer.model = values.model;
+        computer.url = values.url;
+        
+        /* console.log(computer); */
+        
+        addComputerToProduction(computer);
+    }
+    
+    dom.append(buttonOk);
 }

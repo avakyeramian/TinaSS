@@ -134,6 +134,12 @@ function content()
         
         div_row.append(elemCreate("h5",{class:"center"},STR.INDEV));
         
+        var production = getProduction();
+        
+        for (var ite in production){
+            div_row.append(elemCreate("div",{class:""},JSON.stringify((production[ite]))));
+        }
+        
         div_container.append(div_row);
         tinaSS_app.append(div_container);
     }
@@ -143,27 +149,7 @@ function content()
         var div_container = elemCreate("div",{class:"container row"},"");
         
         ComputerForm(div_container,null);
-        
-        var div_row = elemCreate("div",{class:"section "},"");
-        div_container.append(div_row);
-        
-        var buttonOk = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},"OK");
-        buttonOk.onclick = function() {
-            var values = getFormValues("OS",["family","version","architecture","url"]);
-            console.log(values)
-        }
-        div_row.append(buttonOk);
-        var buttonReset = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},"Reset");
-        buttonReset.onclick = function() {
-            resetFormValues("OS",["family","version","architecture","url"]);
-        }
-        div_row.append(buttonReset);
-        var buttonSet = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},"Set");
-        buttonSet.onclick = function() {
-            setFormValues("OS",{"family":"GNU/Linux","version":"Ubuntu 18.04","architecture":"64-bit","url":""});
-        }
-        div_row.append(buttonSet);
-        
+                
         tinaSS_app.append(div_container);       
     }
     

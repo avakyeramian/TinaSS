@@ -24,17 +24,17 @@ function firstUpperCase(string){
 */
 function inputTextCreate(fieldData){
     var div = elemCreate("div",{class:"input-field col m6 s12"},"");
-    var input = elemCreate("input",{type:"text",name:fieldData.name,id:fieldData.form+fieldData.name},"");
+    var input = elemCreate("input",{type:"text",name:fieldData.name,id:fieldData.form+"_"+fieldData.name},"");
     div.append(input);
-    var label = elemCreate("label",{for:fieldData.form+fieldData.name},fieldData.label);
+    var label = elemCreate("label",{for:fieldData.form+"_"+fieldData.name},fieldData.label);
     div.append(label);
     if(fieldData.datalist){
-        var datalist = elemCreate("datalist",{id:fieldData.form+fieldData.name+"List"},"");
+        var datalist = elemCreate("datalist",{id:fieldData.form+"_"+fieldData.name+"List"},"");
         for(var ite in fieldData.datalist){
             var option = elemCreate("option",{value:fieldData.datalist[ite]},"");
             datalist.append(option);
         }
-        input.setAttribute("list",fieldData.form+fieldData.name+"List");
+        input.setAttribute("list",fieldData.form+"_"+fieldData.name+"List");
         div.append(datalist);
     }
     if(fieldData.value){
@@ -74,10 +74,15 @@ function formCreate(formData){
 function getFormValues(formName,fieldNames){
     var json = {}; 
     for(var ite in fieldNames){
-        var input = document.getElementById(formName+fieldNames[ite]);
+        var input = document.getElementById(formName+"_"+fieldNames[ite]);
         json[input.name]=input.value;
     }
     return json;
+}
+
+function buttonOkForm(){
+    var buttonOk = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},"OK");
+    return buttonOk;
 }
 
 /*
@@ -85,7 +90,7 @@ function getFormValues(formName,fieldNames){
 */
 function resetFormValues(formName,fieldNames){
     for(var ite in fieldNames){
-        var input = document.getElementById(formName+fieldNames[ite]);
+        var input = document.getElementById(formName+"_"+fieldNames[ite]);
         input.value = "";
     }
     
@@ -100,7 +105,7 @@ function resetFormValues(formName,fieldNames){
 */
 function setFormValues(formName,fieldsData){
     for(var att in fieldsData){
-        var input = document.getElementById(formName+att);
+        var input = document.getElementById(formName+"_"+att);
         input.value = fieldsData[att];
     }
     

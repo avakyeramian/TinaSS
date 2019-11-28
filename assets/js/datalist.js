@@ -1,4 +1,4 @@
-var datalistComputerType = ["Laptop","Desktop","PDA","Single-board computer","Thin client","Microcomputer","Server","Ultraportable","Netbook","Palmtop PC","Firewall","Router"];
+var datalistComputerType = ["Laptop","Desktop","PDA","Single-board computer","Thin client","Microcomputer","Server","Ultraportable","Netbook","Palmtop PC","Firewall","Router","NAS"];
 
 var datalistComputerBrand = ["Lenovo","IBM","HP","MSI","Acer","Panasonic","Alienware","Amiga","Amstrad","Apple","Asrock","Asus","Atari","Commodore","Compaq","Dell","DFI","Fujitsu","Gigabyte","LG","Medion","Motorola","Nec","Wyse","Neoware","Nvidia","Google","Packard Bell","Razer","Sanyo","SIS","Goupil","Sony","Supermicro","Tandy","Texas Instruments","Casio","Alice","Thomson","Toshiba","Tyan","Via","Zotac"];
 
