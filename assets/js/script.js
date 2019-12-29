@@ -134,11 +134,10 @@ function content()
         
         div_row.append(elemCreate("h5",{class:"center"},STR.INDEV));
         
-        var production = getProduction();
+        var production = craftProductionTable();
         
-        for (var ite in production){
-            div_row.append(elemCreate("div",{class:""},JSON.stringify((production[ite]))));
-        }
+        div_row.append(production);
+        
         
         div_container.append(div_row);
         tinaSS_app.append(div_container);

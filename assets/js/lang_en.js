@@ -27,6 +27,15 @@ function langEnglish(){
         LINE : "Line",
         MODEL : "Model",
         URL : "Url",
+        PRODUCTNAME : "Product Name",
+        MOTHERBOARD : "Motherboard",
+        CPU : "CPU",
+        RAM : "RAM",
+        GPU : "GPU",
+        MASSSTORAGE : "Mass storage",
+        COMPUTERCASE : "Computer case",
+        POWERSUPPLY : "Power supply",
+        OS : "Operating system",
     };
     
     document.getElementById("description").innerHTML = STR.DESCRIPTION;

@@ -116,6 +116,32 @@ function setFormValues(formName,fieldsData){
 }
 
 /*
+    Create table with tableHead like ["Nickname","CPU"] and tableBody like [["RainbowDash","Ryzen 5 3500x"],["Fluttershy","Athlon 3000G"]]
+*/
+function createTable(tableHead,tableBody){
+    var table = elemCreate("table",{class:"responsive-table"},"");
+    var thead = elemCreate("thead",{},"");
+    var trInThead = elemCreate("tr",{},"");
+    for(var ite in tableHead){
+        var th = elemCreate("th",{},tableHead[ite]);
+        trInThead.append(th);
+    }
+    thead.append(trInThead);
+    table.append(thead);
+    var tbody = elemCreate("tbody",{},"");
+    for(var ith in tableBody){
+        var trInTbody = elemCreate("tr",{},"");
+        for(var curr in tableBody[ith]){
+            var td = elemCreate("td",{},tableBody[ith][curr]);
+            trInTbody.append(td);
+        }
+        tbody.append(trInTbody);
+    }
+    table.append(tbody);
+    return table;
+}
+
+/*
     Create id with timestamp
 */
 function generateID(){

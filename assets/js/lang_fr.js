@@ -27,6 +27,15 @@ function langFrench(){
         LINE : "Gamme",
         MODEL : "Modèle",
         URL : "Url",
+        PRODUCTNAME : "Désignation",
+        MOTHERBOARD : "Carte Mère",
+        CPU : "Processeur",
+        RAM : "Mémoire Vive",
+        GPU : "Carte graphique",
+        MASSSTORAGE : "Stockage de masse",
+        COMPUTERCASE : "Boitier",
+        POWERSUPPLY : "Alimentation",
+        OS : "Système d'exploitation",
     };
     
     document.getElementById("description").innerHTML = STR.DESCRIPTION;    
