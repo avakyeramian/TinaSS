@@ -80,9 +80,9 @@ function getFormValues(formName,fieldNames){
     return json;
 }
 
-function buttonOkForm(){
-    var buttonOk = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},"OK");
-    return buttonOk;
+function buttonForm(name){
+    var button = elemCreate("button",{class:"col s4 waves-effect waves-light btn grey darken-3"},name);
+    return button;
 }
 
 /*

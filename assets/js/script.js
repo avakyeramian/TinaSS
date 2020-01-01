@@ -46,8 +46,7 @@ function content()
             //console.log("Settings");
             pageSettings();
         }else if ($_GET.stock){
-            console.log("Stock");
-            pageError404();
+            pageStock();
         }else if ($_GET.search){
             console.log("Search : " + $_GET.search);
         }else if ($_GET.display){
@@ -134,9 +133,30 @@ function content()
         
         div_row.append(elemCreate("h5",{class:"center"},STR.INDEV));
         
-        var production = craftProductionTable();
+        var production = getProduction();
+        var productionComputer_table = craftComputerTable(production);
         
-        div_row.append(production);
+        div_row.append(productionComputer_table);
+        
+        
+        div_container.append(div_row);
+        tinaSS_app.append(div_container);
+    }
+    
+    /*
+        Page Stock
+    */
+    function pageStock(){
+        tinaSS_app.innerHTML = "";
+        var div_container = elemCreate("div",{class:"container"},"");
+        var div_row = elemCreate("div",{class:"row"},"");
+        
+        div_row.append(elemCreate("h5",{class:"center"},STR.INDEV));
+        
+        var stock = getStock();
+        var stockComputer_table = craftComputerTable(stock.computer_array);
+        
+        div_row.append(stockComputer_table);
         
         
         div_container.append(div_row);

@@ -18,31 +18,28 @@ function addComputerToProduction(computer){
     localStorage.setItem("production",production_json);
 }
 
-function craftProductionTable(){
-    var tableHead = [STR.NICKNAME,STR.MOTHERBOARD,STR.PRODUCTNAME,STR.CPU,STR.RAM,STR.GPU,STR.MASSSTORAGE,STR.COMPUTERCASE,STR.POWERSUPPLY,STR.OS];
-    var tableBody = [];
-    var production = getProduction();
-    console.log(production);
-    for(var ite in production){
-        var nickname = production[ite].nickname;
-        var motherboard = "";
-        var productName = production[ite].brand+" "+production[ite].line+" "+production[ite].model;
-        var cpu = "";
-        var ram = "";
-        var gpu = "";
-        var massStorage = "";
-        var computerCase = "";
-        var powerSupply = "";
-        var os = "";
-        
-        var computer = [nickname,motherboard,productName,cpu,ram,gpu,massStorage,computerCase,powerSupply,os];
-        tableBody.push(computer);        
+function getStock(){
+    var stock;
+    var stock_json = localStorage.getItem("stock");
+    var stock_parsed = JSON.parse(stock_json);
+    if(stock_parsed!==null){
+        stock = stock_parsed;
     }
-    
+    else{
+        stock = {};
+    }
+    return stock;
+}
 
-    
-    var table = createTable(tableHead,tableBody);
-    
-    return table;
-
+function addComputerToStock(computer){
+    var stock = getStock();
+    var computer_array;
+    if((stock.computer_array)===false){
+        stock.computer_array = [];
+    }
+    computer_array = stock.computer_array;
+    computer_array.push(computer);
+    stock.computer_array = computer_array;
+    var stock_json = JSON.stringify(stock);
+    localStorage.setItem("stock",stock_json);
 }

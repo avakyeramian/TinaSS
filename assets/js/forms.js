@@ -18,8 +18,8 @@ function ComputerForm(dom,computer){
     
     dom.append(form);    
 
-    var buttonOk = buttonOkForm();
-    buttonOk.onclick = function() {
+    var buttonProd = buttonForm("prod");
+    buttonProd.onclick = function() {
         var values = getFormValues("Computer",["nickname"/* ",image" */,"usage","type","brand","line","model","url"]);
         computer.nickname = values.nickname;
         /* computer.image = */
@@ -35,5 +35,24 @@ function ComputerForm(dom,computer){
         addComputerToProduction(computer);
     }
     
-    dom.append(buttonOk);
+    dom.append(buttonProd);
+
+    var buttonStock = buttonForm("stock");
+    buttonStock.onclick = function() {
+        var values = getFormValues("Computer",["nickname"/* ",image" */,"usage","type","brand","line","model","url"]);
+        computer.nickname = values.nickname;
+        /* computer.image = */
+        computer.usage = values.usage;
+        computer.type = values.type;
+        computer.brand = values.brand;
+        computer.line = values.line;
+        computer.model = values.model;
+        computer.url = values.url;
+        
+        /* console.log(computer); */
+        
+        addComputerToStock(computer);
+    }
+    
+    dom.append(buttonStock);
 }
